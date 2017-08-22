@@ -1,0 +1,33 @@
+name: envprint
+version: '0.1'
+summary: First own snap
+description: |
+ testing first own snap
+
+grade: devel
+confinement: devmode
+
+parts:
+  #gnu-hello:
+    #source: http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
+    #plugin: autotools
+  #gnu-bash:
+    #source: http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+    #plugin: autotools
+    #configflags: ["--infodir=/var/bash/info"]
+  envprint:
+    source: /home/arno/hello
+    plugin: nil
+    build: |
+      g++ -o test test.cpp
+    install: |
+      cp test $SNAPCRAFT_PART_INSTALL
+apps:
+    #hello:
+     #command: bin/hello 
+    #bash:
+     #command: bash
+    envprint:
+      command: test
+
+ 
